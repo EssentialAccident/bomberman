@@ -5,11 +5,14 @@ class GameWindow < Gosu::Window
   def initialize(width, height)
     super width, height
     self.caption = 'Bomberman'
+    @map = Map.new self
   end
 
   def update; end
 
-  def draw; end
+  def draw
+    @map.draw
+  end
 
   def button_down(id)
     case id
