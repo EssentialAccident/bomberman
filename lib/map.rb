@@ -2,9 +2,9 @@
 class Map
   include Gosu
 
-  def initialize(window, size = 11)
+  def initialize(window, size = 10)
     @window = window
-    @size = size
+    @size = size.even? ? size + 1 : size
     @tiles = generate_tiles @size
   end
 
@@ -59,8 +59,10 @@ class Map
           tiles[row].push Tile.new row, column, :wall
         elsif !row.zero? && !column.zero? && row.even? && column.even?
           tiles[row].push Tile.new row, column, :wall
-        else
+        elsif Gosu.random(0.0, 1.0) < 0.5
           tiles[row].push Tile.new row, column, :empty
+        else
+          tiles[row].push Tile.new row, column, :brick
         end
       end
     end
