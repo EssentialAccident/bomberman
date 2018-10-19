@@ -2,7 +2,7 @@
 class Map
   include Gosu
 
-  def initialize(window, size = 10)
+  def initialize(window, size = 50)
     @window = window
     @size = size.even? ? size + 1 : size
     @tiles = generate_tiles @size
@@ -25,11 +25,11 @@ class Map
              brick: 1,
              wall: 2 }.freeze
     IMG = { empty:
-              Image.new('media/sprites/blocks/floor.png',
+              Image.new('media/sprites/blocks/bomberman-floor.png',
                         tileable: true),
             brick: Image.new('media/sprites/blocks/bomberman-brick.png',
                              tileable: true),
-            wall: Image.new('media/sprites/blocks/bomberman-wall.png',
+            wall: Image.new('media/sprites/blocks/bomberman-interior-wall.png',
                             tileable: true) }.freeze
 
     attr_reader :type
