@@ -22,12 +22,13 @@ module Bomberman
     class Tile
       include Gosu
 
+      Z_ORDER = 10
+
       TYPE = { empty: 0,
                brick: 1,
                wall: 2 }.freeze
-      IMG = { empty:
-                Image.new('media/sprites/blocks/bomberman-floor.png',
-                          tileable: true),
+      IMG = { empty: Image.new('media/sprites/blocks/bomberman-floor.png',
+                               tileable: true),
               brick: Image.new('media/sprites/blocks/bomberman-brick.png',
                                tileable: true),
               wall: Image.new('media/sprites/blocks/bomberman-interior-wall.png',
@@ -36,17 +37,16 @@ module Bomberman
       attr_reader :type
 
       def initialize(position, type)
+        puts Dir.pwd
         @position = position
         @type = type
-        @img = IMG[@type]
+        @sprite = Sprite.new position, IMG[@type], Z_ORDER
       end
 
       def update; end
 
       def draw
-        @img.draw @position.x_coordinate * @img.width,
-                  @position.y_coordinate * @img.height,
-                  50
+        @sprite.draw
       end
     end
 

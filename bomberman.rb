@@ -6,6 +6,7 @@ module Bomberman
   # Project files
   require_relative 'lib/bomberman/game_window'
   require_relative 'lib/bomberman/map'
+  require_relative 'lib/bomberman/sprite'
   require_relative 'lib/bomberman/character'
   require_relative 'lib/bomberman/player'
 

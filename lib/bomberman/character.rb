@@ -1,26 +1,17 @@
 module Bomberman
   # This will be the parent class for the player and the enemies
-  class Character
+  class Character < Sprite
     include Gosu
 
-    attr_reader :x, :y
-
     # The position x, y represents the position on the map grid
-    def initialize(window, position = Vector2D.new(1, 1), color = Color::WHITE)
+    def initialize(window, position = Vector2D.new(1, 1), image, z_order)
+      super position, image, z_order
       @window = window
-      @position = position
-      @color = color
+      @color = Color::White
       # TODO: Add the array of images for animation
     end
 
     def update; end
-
-    def draw
-      # Temporarily the hcaracter will be represnted by a quad.
-      # The drawing of the quad assumes that the tiles are 64 pixels squared
-      # TODO: Display animations
-      draw_quad_with_vectors @position * 64
-    end
 
     def move(direction)
       case direction
@@ -38,6 +29,8 @@ module Bomberman
 
     private
 
+    # The draw_quad_with_vectors is a temporary method.
+    # It is a place holder for the sprites that I need to produce
     def draw_quad_with_vectors(screen_position)
       screen_x = screen_position.x_coordinate
       screen_y = screen_position.y_coordinate
