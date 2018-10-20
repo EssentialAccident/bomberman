@@ -10,6 +10,10 @@ class Vector2D
     @y_coordinate = y_coordinate
   end
 
+  def to_s
+    "#{x}, #{y}"
+  end
+
   def +(another)
     if another.is_a?(Vector2D)
       Vector2D.new @x_coordinate + another.x_coordinate,
@@ -29,5 +33,10 @@ class Vector2D
       @x_coordinate == another.x_coordinate &&
         @y_coordinate == another.y_coordinate ? true : false
     end
+  end
+
+  def *(_number)
+    Vector2D.new @x_coordinate * 64,
+                 @y_coordinate * 64
   end
 end

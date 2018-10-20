@@ -9,6 +9,9 @@ module Bomberman
   require_relative 'lib/bomberman/character'
   require_relative 'lib/bomberman/player'
 
+  # Utility files
+  require_relative 'lib/math/Vector2D'
+
   # This just creates the window
   class Bomberman
     def start

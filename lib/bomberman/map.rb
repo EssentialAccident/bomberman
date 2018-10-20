@@ -35,9 +35,8 @@ module Bomberman
 
       attr_reader :type
 
-      def initialize(x, y, type)
-        @x = x
-        @y = y
+      def initialize(position, type)
+        @position = position
         @type = type
         @img = IMG[@type]
       end
@@ -45,7 +44,9 @@ module Bomberman
       def update; end
 
       def draw
-        @img.draw @x * @img.width, @y * @img.height, 50
+        @img.draw @position.x_coordinate * @img.width,
+                  @position.y_coordinate * @img.height,
+                  50
       end
     end
 
@@ -57,13 +58,13 @@ module Bomberman
         tiles[row] = []
         size.times do |column|
           if row.zero? || column.zero? || row == size - 1 || column == size - 1
-            tiles[row].push Tile.new row, column, :wall
+            tiles[row].push Tile.new Vector2D.new(row, column), :wall
           elsif !row.zero? && !column.zero? && row.even? && column.even?
-            tiles[row].push Tile.new row, column, :wall
+            tiles[row].push Tile.new Vector2D.new(row, column), :wall
           elsif Gosu.random(0.0, 1.0) < 0.5
-            tiles[row].push Tile.new row, column, :empty
+            tiles[row].push Tile.new Vector2D.new(row, column), :empty
           else
-            tiles[row].push Tile.new row, column, :brick
+            tiles[row].push Tile.new Vector2D.new(row, column), :brick
           end
         end
       end
