@@ -4,10 +4,10 @@ module Bomberman
     include Gosu
 
     # The position x, y represents the position on the map grid
-    def initialize(window, position = Vector2D.new(1, 1), image, z_order)
+    def initialize(window, position, image, z_order)
       super position, image, z_order
       @window = window
-      @color = Color::White
+      @color = Color::WHITE
       # TODO: Add the array of images for animation
     end
 
@@ -31,7 +31,7 @@ module Bomberman
 
     # The draw_quad_with_vectors is a temporary method.
     # It is a place holder for the sprites that I need to produce
-    def draw_quad_with_vectors(screen_position)
+    def draw_quad_with_vectors
       screen_x = screen_position.x_coordinate
       screen_y = screen_position.y_coordinate
       draw_quad screen_x, screen_y, @color,

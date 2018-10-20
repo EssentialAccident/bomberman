@@ -37,10 +37,9 @@ module Bomberman
       attr_reader :type
 
       def initialize(position, type)
-        puts Dir.pwd
         @position = position
         @type = type
-        @sprite = Sprite.new position, IMG[@type], Z_ORDER
+        @sprite = Sprite.new @position, IMG[@type], Z_ORDER
       end
 
       def update; end

@@ -11,7 +11,7 @@ class Vector2D
   end
 
   def to_s
-    "#{x}, #{y}"
+    "#{x_coordinate}, #{y_coordinate}"
   end
 
   def +(another)
@@ -35,8 +35,8 @@ class Vector2D
     end
   end
 
-  def *(_number)
-    Vector2D.new @x_coordinate * 64,
-                 @y_coordinate * 64
+  def *(number)
+    Vector2D.new @x_coordinate * number,
+                 @y_coordinate * number
   end
 end

@@ -7,7 +7,7 @@ module Bomberman
       super width, height
       self.caption = 'Bomberman'
       @map = Map.new self
-      @player = Player.new self, Vector2D.new(1, 1), Color::AQUA
+      @player = Player.new self, Vector2D.new(1, 1), nil, 30
     end
 
     def update; end

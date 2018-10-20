@@ -12,13 +12,14 @@ module Bomberman
     end
 
     def draw
-      @image.draw screen_position.x_coordinate,
-                  screen_position.y_coordinate,
+      scr_pos = screen_position
+      @image.draw scr_pos.x_coordinate,
+                  scr_pos.y_coordinate,
                   @z_order
     end
 
     def screen_position
-      @postion * SPRITE_SIZE
+      @position * SPRITE_SIZE
     end
   end
 end
