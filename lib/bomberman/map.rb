@@ -60,7 +60,7 @@ module Bomberman
             tiles[row].push Tile.new Vector2D.new(row, column), :wall
           elsif !row.zero? && !column.zero? && row.even? && column.even?
             tiles[row].push Tile.new Vector2D.new(row, column), :wall
-          elsif Gosu.random(0.0, 1.0) < 0.5
+          elsif Gosu.random(0.0, 1.0) < 0.5 || (row == 1 && column == 1)
             tiles[row].push Tile.new Vector2D.new(row, column), :empty
           else
             tiles[row].push Tile.new Vector2D.new(row, column), :brick
