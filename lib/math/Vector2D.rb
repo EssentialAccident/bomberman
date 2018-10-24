@@ -10,6 +10,10 @@ class Vector2D
     @y_coordinate = y_coordinate
   end
 
+  def self.zero
+    Vector2D.new(0, 0)
+  end
+
   def to_s
     "#{x_coordinate}, #{y_coordinate}"
   end

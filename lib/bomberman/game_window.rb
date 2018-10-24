@@ -10,7 +10,12 @@ module Bomberman
       @player = Player.new self, Vector2D.new(1, 1), nil, 30
     end
 
-    def update; end
+    def update
+      @player.move(:left) if button_down?(KB_LEFT) || button_down?(KB_A)
+      @player.move(:right) if button_down?(KB_RIGHT) || button_down?(KB_D)
+      @player.move(:up) if button_down?(KB_UP) || button_down?(KB_W)
+      @player.move(:down) if button_down?(KB_DOWN) || button_down?(KB_S)
+  end
 
     def draw
       @map.draw
@@ -21,6 +26,9 @@ module Bomberman
       case id
       when KB_ESCAPE
         exit
+        # TODO: For the movement of the player a movement controller can be
+        # implemented later. For now the movement of the player will be handle
+        # at the window
       end
     end
   end
