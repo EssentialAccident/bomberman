@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # The module Bomberman contains all the requirements for the Bomberman Game
 module Bomberman
   # Gems

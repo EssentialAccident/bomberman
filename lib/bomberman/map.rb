@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module Bomberman
   # Map will take care of the map
   class Map
     include Gosu
 
-    def initialize(size = 50)
+    def initialize(size = 25)
       @size = size.even? ? size + 1 : size
       @tiles = generate_tiles @size
     end
