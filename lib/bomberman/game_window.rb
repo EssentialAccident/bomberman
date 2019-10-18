@@ -22,8 +22,8 @@ module Bomberman
     end
 
     def draw
-      @map.draw
-      @player.draw
+      @map.draw(offset)
+      @player.draw(offset)
     end
 
     def button_down(button)
@@ -32,6 +32,29 @@ module Bomberman
       when KB_ESCAPE
         exit
       end
+    end
+
+    private
+
+    # Calculates the offset of the camera to display the sprites on the window
+    def offset
+      # The player should be center on the screen when possible
+      offset = Vector2D.zero
+      # Offseting the X Coordinate
+      if @player.position.x > width / 2
+        offset = Vector2D.new(-@player.position.x + width / 2, offset.y)
+      end
+      if offset.x < (@map.dimension - width) * -1
+        offset = Vector2D.new(-@map.dimension + width, offset.y)
+      end
+      # Offseting the Y Coordinate
+      if @player.position.y > height / 2
+        offset = Vector2D.new(offset.x, -@player.position.y + height / 2)
+      end
+      if offset.y < (@map.dimension - height) * -1
+        offset = Vector2D.new(offset.x, -@map.dimension + height)
+      end
+      offset
     end
   end
 end

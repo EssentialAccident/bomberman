@@ -37,11 +37,12 @@ module Bomberman
 
     # The draw_quad_with_vectors is a temporary method.
     # It is a place holder for the sprites that I need to produce
-    def draw_quad_with_vectors
-      draw_quad @position.x, @position.y, @color,
-                @position.x + 64, @position.y, @color,
-                @position.x, @position.y + 64, @color,
-                @position.x + 64, @position.y + 64, @color,
+    def draw_quad_with_vectors(offset)
+      offset_position = @position.add_vector(offset)
+      draw_quad offset_position.x, offset_position.y, @color,
+                offset_position.x + 64, offset_position.y, @color,
+                offset_position.x, offset_position.y + 64, @color,
+                offset_position.x + 64, offset_position.y + 64, @color,
                 60
     end
   end

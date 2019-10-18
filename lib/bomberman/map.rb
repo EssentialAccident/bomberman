@@ -10,10 +10,17 @@ module Bomberman
 
     def update; end
 
-    def draw
+    def draw(offset)
       @tiles.each do |array|
-        array.each(&:draw)
+        array.each do |tile|
+          tile.draw(offset)
+        end
       end
+    end
+
+    # Returns the dimension in pixels of the Map
+    def dimension
+      @size * Tile::SIZE
     end
 
     private

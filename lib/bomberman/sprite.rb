@@ -9,8 +9,9 @@ module Bomberman
       @z_order = z_order
     end
 
-    def draw
-      @image.draw @position.x, @position.y, @z_order
+    def draw(offset = Vector2D.zero)
+      offset_position = @position.add_vector(offset)
+      @image.draw offset_position.x, offset_position.y, @z_order
     end
   end
 end
