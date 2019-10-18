@@ -3,10 +3,16 @@ module Bomberman
   class Character < Sprite
     include Gosu
 
+    DIRECTION = {
+      left:   Vector2D.new(-1, 0),
+      right:  Vector2D.new(1, 0),
+      up:     Vector2D.new(0, -1),
+      down:   Vector2D.new(0, 1)
+    }.freeze
+
     # The position x, y represents the position on the map grid
-    def initialize(window, position, image, z_order)
+    def initialize(position, image = nil, z_order = 15)
       super position, image, z_order
-      @window = window
       @color = Color::WHITE
       @speed = 5
       # TODO: Add the array of images for animation
@@ -15,20 +21,15 @@ module Bomberman
     def update; end
 
     def draw
-      draw_quad_with_vectors
+      if @image.nil?
+        draw_quad_with_vectors
+      else
+        super
+      end
     end
 
     def move(direction)
-      case direction
-      when :left
-        @position.x_coordinate -= @speed
-      when :right
-        @position.x_coordinate += @speed
-      when :up
-        @position.y_coordinate -= @speed
-      when :down
-        @position.y_coordinate += @speed
-      end
+      @position = @position.add_vector(DIRECTION[direction].multiply_scalar(@speed))
       # TODO: Add the conditions to avoid character to go out of the window
     end
 
@@ -37,10 +38,10 @@ module Bomberman
     # The draw_quad_with_vectors is a temporary method.
     # It is a place holder for the sprites that I need to produce
     def draw_quad_with_vectors
-      draw_quad @position.x_coordinate, @position.y_coordinate, @color,
-                @position.x_coordinate + 64, @position.y_coordinate, @color,
-                @position.x_coordinate, @position.y_coordinate + 64, @color,
-                @position.x_coordinate + 64, @position.y_coordinate + 64, @color,
+      draw_quad @position.x, @position.y, @color,
+                @position.x + 64, @position.y, @color,
+                @position.x, @position.y + 64, @color,
+                @position.x + 64, @position.y + 64, @color,
                 60
     end
   end

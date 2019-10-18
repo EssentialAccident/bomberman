@@ -2,16 +2,15 @@
 module Bomberman
   # Gems
   require 'gosu'
+  require 'vector2d'
 
   # Project files
   require_relative 'lib/bomberman/game_window'
-  require_relative 'lib/bomberman/map'
   require_relative 'lib/bomberman/sprite'
+  require_relative 'lib/bomberman/tile'
+  require_relative 'lib/bomberman/map'
   require_relative 'lib/bomberman/character'
   require_relative 'lib/bomberman/player'
-
-  # Utility files
-  require_relative 'lib/math/Vector2D'
 
   # This just creates the window
   class Bomberman

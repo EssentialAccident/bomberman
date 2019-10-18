@@ -2,12 +2,14 @@ GEM
   remote: https://rubygems.org/
   specs:
     gosu (0.14.4)
+    vector2d-ruby (1.1.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   gosu
+  vector2d-ruby (~> 1.1)
 
 BUNDLED WITH
    1.16.2

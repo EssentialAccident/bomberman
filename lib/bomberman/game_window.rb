@@ -7,7 +7,7 @@ module Bomberman
       super width, height
       self.caption = 'Bomberman'
       @map = Map.new self
-      @player = Player.new self, Vector2D.new(1, 1), nil, 30
+      @player = Player.new
     end
 
     def update
@@ -15,7 +15,7 @@ module Bomberman
       @player.move(:right) if button_down?(KB_RIGHT) || button_down?(KB_D)
       @player.move(:up) if button_down?(KB_UP) || button_down?(KB_W)
       @player.move(:down) if button_down?(KB_DOWN) || button_down?(KB_S)
-  end
+    end
 
     def draw
       @map.draw
