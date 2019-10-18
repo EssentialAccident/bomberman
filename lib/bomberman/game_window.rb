@@ -41,18 +41,20 @@ module Bomberman
       # The player should be center on the screen when possible
       offset = Vector2D.zero
       # Offseting the X Coordinate
-      if @player.position.x > width / 2
-        offset = Vector2D.new(-@player.position.x + width / 2, offset.y)
+      horizontal_offset = @player.position.x - (width / 2)
+      max_horizontal_offset = @map.dimension - width
+      if horizontal_offset > 0
+        offset = Vector2D.new(-horizontal_offset, offset.y)
       end
-      if offset.x < (@map.dimension - width) * -1
-        offset = Vector2D.new(-@map.dimension + width, offset.y)
+      if horizontal_offset > max_horizontal_offset
+        offset = Vector2D.new(-max_horizontal_offset, offset.y)
       end
       # Offseting the Y Coordinate
-      if @player.position.y > height / 2
-        offset = Vector2D.new(offset.x, -@player.position.y + height / 2)
-      end
-      if offset.y < (@map.dimension - height) * -1
-        offset = Vector2D.new(offset.x, -@map.dimension + height)
+      vertical_offset = @player.position.y - (height / 2)
+      max_vertical_offset = @map.dimension - height
+      offset = Vector2D.new(offset.x, -vertical_offset) if vertical_offset > 0
+      if vertical_offset > max_vertical_offset
+        offset = Vector2D.new(offset.x, -max_vertical_offset)
       end
       offset
     end
