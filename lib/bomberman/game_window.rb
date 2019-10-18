@@ -4,9 +4,9 @@ module Bomberman
     include Gosu
 
     def initialize(width, height)
-      super width, height
+      super width, height, false
       self.caption = 'Bomberman'
-      @map = Map.new self
+      @map = Map.new
       @player = Player.new
     end
 

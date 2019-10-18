@@ -3,8 +3,7 @@ module Bomberman
   class Map
     include Gosu
 
-    def initialize(window, size = 50)
-      @window = window
+    def initialize(size = 50)
       @size = size.even? ? size + 1 : size
       @tiles = generate_tiles @size
     end
