@@ -11,6 +11,10 @@ module Bomberman
     end
 
     def update
+      # Player movement
+      # TODO: For the movement of the player a movement controller can be
+      # implemented later. For now the movement of the player will be handle
+      # at the window
       @player.move(:left) if button_down?(KB_LEFT) || button_down?(KB_A)
       @player.move(:right) if button_down?(KB_RIGHT) || button_down?(KB_D)
       @player.move(:up) if button_down?(KB_UP) || button_down?(KB_W)
@@ -22,13 +26,11 @@ module Bomberman
       @player.draw
     end
 
-    def button_down(id)
-      case id
+    def button_down(button)
+      case button
+      # Closing the game
       when KB_ESCAPE
         exit
-        # TODO: For the movement of the player a movement controller can be
-        # implemented later. For now the movement of the player will be handle
-        # at the window
       end
     end
   end

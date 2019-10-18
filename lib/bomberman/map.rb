@@ -12,10 +12,8 @@ module Bomberman
     def update; end
 
     def draw
-      @size.times do |row|
-        @size.times do |column|
-          @tiles[row][column].draw
-        end
+      @tiles.each do |array|
+        array.each(&:draw)
       end
     end
 

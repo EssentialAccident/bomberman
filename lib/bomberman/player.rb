@@ -3,7 +3,7 @@ module Bomberman
   class Player < Character
     def initialize
       position = Vector2D.new Tile::SIZE, Tile::SIZE
-      # For now there is no image for the player.
+      # For now there is no image for the playerl.
       # This will change when the animation system takes over
       super position
       @speed = 5
