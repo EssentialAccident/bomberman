@@ -1,11 +1,16 @@
+# frozen_string_literal: true
+
 module Bomberman
-  class Tile < Bomberman::Sprite
+  # Tile handles individual tiles
+  # Tiles can be 1 of three possibilities
+  #   - Wall  = Cannot be destroyed by bombs
+  #   - Brick = Can be destroyed by bomb
+  #   - Empty = Walking space
+  class Tile < Sprite
     include Gosu
 
     SIZE = 64
-
     Z_ORDER = 10
-
     TYPE = { empty: 0,
              brick: 1,
              wall: 2 }.freeze

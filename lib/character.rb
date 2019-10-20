@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 module Bomberman
   # This will be the parent class for the player and the enemies
   class Character < Sprite
     include Gosu
 
     DIRECTION = {
-      left:   Vector2D.new(-1, 0),
-      right:  Vector2D.new(1, 0),
-      up:     Vector2D.new(0, -1),
-      down:   Vector2D.new(0, 1)
+      left: Vector2D.new(-1, 0),
+      right: Vector2D.new(1, 0),
+      up: Vector2D.new(0, -1),
+      down: Vector2D.new(0, 1)
     }.freeze
 
     # The position x, y represents the position on the map grid
@@ -15,10 +17,14 @@ module Bomberman
       super position, image, z_order
       @color = Color::WHITE
       @speed = 5
+      @z_order = z_order
       # TODO: Add the array of images for animation
     end
 
-    def update; end
+    def update
+      # TODO: Collision with map blocks
+      # TODO: Collision with other characters
+    end
 
     def draw
       if @image.nil?
@@ -39,11 +45,12 @@ module Bomberman
     # It is a place holder for the sprites that I need to produce
     def draw_quad_with_vectors(offset)
       offset_position = @position.add_vector(offset)
-      draw_quad offset_position.x, offset_position.y, @color,
-                offset_position.x + 64, offset_position.y, @color,
-                offset_position.x, offset_position.y + 64, @color,
-                offset_position.x + 64, offset_position.y + 64, @color,
-                60
+      draw_rect offset_position.x,
+                offset_position.y,
+                Tile::SIZE,
+                Tile::SIZE,
+                @color,
+                @z_order
     end
   end
 end

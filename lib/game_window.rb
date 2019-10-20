@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Bomberman
   # This class will contain the main game loop
   class GameWindow < Gosu::Window
@@ -8,6 +10,7 @@ module Bomberman
       self.caption = 'Bomberman'
       @map = Map.new
       @player = Player.new
+      @title = Title.new width, 52
     end
 
     def update
@@ -24,6 +27,7 @@ module Bomberman
     def draw
       @map.draw(offset)
       @player.draw(offset)
+      @title.draw
     end
 
     def button_down(button)
@@ -50,13 +54,13 @@ module Bomberman
         offset = Vector2D.new(-max_horizontal_offset, offset.y)
       end
       # Offseting the Y Coordinate
-      vertical_offset = @player.position.y - (height / 2)
-      max_vertical_offset = @map.dimension - height
+      vertical_offset = @player.position.y - (height / 2) + @title.height
+      max_vertical_offset = @map.dimension - height + @title.height
       offset = Vector2D.new(offset.x, -vertical_offset) if vertical_offset > 0
       if vertical_offset > max_vertical_offset
         offset = Vector2D.new(offset.x, -max_vertical_offset)
       end
-      offset
+      offset.add_vector(Vector2D.new(0, @title.height))
     end
   end
 end

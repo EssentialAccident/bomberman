@@ -37,7 +37,7 @@ module Bomberman
             tiles[row].push Tile.new tile_position, :wall
           elsif !row.zero? && !column.zero? && row.even? && column.even?
             tiles[row].push Tile.new tile_position, :wall
-          elsif Gosu.random(0.0, 1.0) < 0.5 || (row == 1 && column == 1)
+          elsif Gosu.random(0.0, 1.0) < 0.7 || (row == 1 && column == 1)
             tiles[row].push Tile.new tile_position, :empty
           else
             tiles[row].push Tile.new tile_position, :brick

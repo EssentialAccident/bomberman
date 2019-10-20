@@ -7,12 +7,13 @@ module Bomberman
   require 'vector2d'
 
   # Project files
-  require_relative 'lib/bomberman/game_window'
-  require_relative 'lib/bomberman/sprite'
-  require_relative 'lib/bomberman/tile'
-  require_relative 'lib/bomberman/map'
-  require_relative 'lib/bomberman/character'
-  require_relative 'lib/bomberman/player'
+  require_relative 'lib/game_window'
+  require_relative 'lib/title'
+  require_relative 'lib/sprite'
+  require_relative 'lib/tile'
+  require_relative 'lib/map'
+  require_relative 'lib/character'
+  require_relative 'lib/player'
 
   # This just creates the window
   class Bomberman
