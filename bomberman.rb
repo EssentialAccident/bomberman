@@ -14,6 +14,7 @@ module Bomberman
   require_relative 'lib/map'
   require_relative 'lib/character'
   require_relative 'lib/player'
+  require_relative 'lib/collision_detection'
 
   # This just creates the window
   class Bomberman

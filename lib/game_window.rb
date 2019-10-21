@@ -11,6 +11,7 @@ module Bomberman
       @map = Map.new
       @player = Player.new
       @title = Title.new width, 52
+      @collision_detection = CollisionDetection.new
     end
 
     def update
@@ -22,6 +23,9 @@ module Bomberman
       @player.move(:right) if button_down?(KB_RIGHT) || button_down?(KB_D)
       @player.move(:up) if button_down?(KB_UP) || button_down?(KB_W)
       @player.move(:down) if button_down?(KB_DOWN) || button_down?(KB_S)
+
+      # Collision Detection
+      @collision_detection.collision_character_map(@player, @map)
     end
 
     def draw

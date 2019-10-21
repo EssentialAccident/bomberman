@@ -12,12 +12,16 @@ module Bomberman
       down: Vector2D.new(0, 1)
     }.freeze
 
+    attr_reader
+
     # The position x, y represents the position on the map grid
     def initialize(position, image = nil, z_order = 15)
       super position, image, z_order
       @color = Color::WHITE
       @speed = 5
       @z_order = z_order
+      @image = image
+
       # TODO: Add the array of images for animation
     end
 
@@ -47,8 +51,8 @@ module Bomberman
       offset_position = @position.add_vector(offset)
       draw_rect offset_position.x,
                 offset_position.y,
-                Tile::SIZE,
-                Tile::SIZE,
+                @width,
+                @height,
                 @color,
                 @z_order
     end

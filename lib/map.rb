@@ -5,12 +5,12 @@ module Bomberman
   class Map
     include Gosu
 
+    attr_reader :tiles
+
     def initialize(size = 25)
       @size = size.even? ? size + 1 : size
       @tiles = generate_tiles @size
     end
-
-    def update; end
 
     def draw(offset)
       @tiles.each do |array|
